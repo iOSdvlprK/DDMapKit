@@ -20,59 +20,85 @@ struct Locations: Identifiable {
     }
 }
 
-let locationsInSpain: [Locations] = [
-    Locations(
+extension Array where Element == Locations {
+    var coordinates: [CLLocationCoordinate2D] {
+        self.map { $0.coordinate }
+    }
+}
+
+extension Locations {
+    static let monteSantiago = Locations(
         name: "Monte Santiago",
         latitude: 42.9903,
         longitude: -2.9875,
         address: "Burgos, Castilla y León, Spain"
-    ),
-    Locations(
+    )
+    
+    static let gorbeaNaturalPark = Locations(
         name: "Gorbea Natural Park",
         latitude: 43.0500,
         longitude: -2.8333,
         address: "Araba/Álava, Basque Country, Spain"
-    ),
-    Locations(
+    )
+    
+    static let otzarretaForest = Locations(
         name: "Otzarreta Forest",
         latitude: 43.0313,
         longitude: -2.7291,
         address: "Zeanuri, Bizkaia, Basque Country, Spain"
-    ),
-    Locations(
+    )
+    
+    static let sanJuanDeGaztelugatxe = Locations(
         name: "San Juan de Gaztelugatxe",
         latitude: 43.4487,
         longitude: -2.7849,
         address: "Bermeo, Bizkaia, Basque Country, Spain"
-    ),
-    Locations(
+    )
+    
+    static let urkiolaNaturalPark = Locations(
         name: "Urkiola Natural Park",
         latitude: 43.1206,
         longitude: -2.6358,
         address: "Durangaldea, Bizkaia, Basque Country, Spain"
-    ),
-    Locations(
+    )
+    
+    static let playaDeLaga = Locations(
         name: "Playa de Laga",
         latitude: 43.4048,
         longitude: -2.6572,
         address: "Ibarrangelu, Bizkaia, Basque Country, Spain"
-    ),
-    Locations(
+    )
+    
+    static let zumaiaFlysch = Locations(
         name: "Zumaia Flysch",
         latitude: 43.2953,
         longitude: -2.2581,
         address: "Zumaia, Gipuzkoa, Basque Country, Spain"
-    ),
-    Locations(
+    )
+    
+    static let pagoetaNaturalPark = Locations(
         name: "Pagoeta Natural Park",
         latitude: 43.2435,
         longitude: -2.1497,
         address: "Aia, Gipuzkoa, Basque Country, Spain"
-    ),
-    Locations(
+    )
+    
+    static let gaztelugatxe = Locations(
         name: "Gaztelugatxe",
         latitude: 43.4500,
         longitude: -2.7800,
         address: "Bermeo, Bizkaia, Basque Country, Spain"
     )
-]
+
+    static let locationsInSpain: [Locations] = [
+        .monteSantiago,
+        .gorbeaNaturalPark,
+        .otzarretaForest,
+        .sanJuanDeGaztelugatxe,
+        .urkiolaNaturalPark,
+        .playaDeLaga,
+        .zumaiaFlysch,
+        .pagoetaNaturalPark,
+        .gaztelugatxe
+    ]
+}

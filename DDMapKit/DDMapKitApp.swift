@@ -11,7 +11,7 @@ import SwiftUI
 struct DDMapKitApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MarkerDemoView()
         }
     }
 }
