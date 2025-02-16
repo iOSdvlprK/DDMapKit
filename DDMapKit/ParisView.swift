@@ -109,6 +109,30 @@ struct ZoomSliderView: View {
         .padding(.horizontal, 20)
         .padding(.bottom, 40)
         .offset(offset)
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    withAnimation(.spring()) {
+                        currentOffset = value.translation
+                    }
+                }
+                .onEnded { _ in
+                    if isPinned { // don't bounce back
+                        endOffset = CGSize(
+                            width: currentOffset.width + endOffset.width,
+                            height: currentOffset.height + endOffset.height
+                        )
+                        
+                        // reset currentOffset
+                        currentOffset = .zero
+                    } else { // bounce back
+                        withAnimation(.spring(.bouncy)) {
+                            endOffset = .zero
+                            currentOffset = .zero
+                        }
+                    }
+                }
+        )
     }
 }
 
